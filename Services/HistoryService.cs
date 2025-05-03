@@ -51,23 +51,17 @@ public class HistoryService : IHistoryService
 
     public void LoadHistory(string path, List<HistoryItem> history)
     {
-        if (!File.Exists(path))
-            Console.WriteLine("not found: " + path);
+        var json = File.ReadAllText(path);;
+        var loadedHistory = JsonSerializer.Deserialize<List<HistoryItem>>(json);
+
+        if (loadedHistory != null)
+        {
+            history.AddRange(loadedHistory);
+            Console.WriteLine("load history: " + history.Count);
+        }
 
         else
-        {
-            var json = File.ReadAllText(path);;
-            var loadedHistory = JsonSerializer.Deserialize<List<HistoryItem>>(json);
-
-            if (loadedHistory != null)
-            {
-                history.AddRange(loadedHistory);
-                Console.WriteLine("load history: " + history.Count);
-            }
-
-            else
-                Console.WriteLine($"History {history.Count} is empty");
-        }
+            Console.WriteLine($"History {history.Count} is empty");
     }
 
     public void SaveHistory(List<HistoryItem> history, string path)
