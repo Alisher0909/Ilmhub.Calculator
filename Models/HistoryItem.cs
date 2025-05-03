@@ -1,3 +1,5 @@
+namespace Calculator.Models;
+
 public class HistoryItem
 {
     public int Id { get; set; }

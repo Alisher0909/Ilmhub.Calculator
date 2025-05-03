@@ -1,13 +1,18 @@
-﻿using Calculator.Services;
+﻿using Calculator.Models;
+using Calculator.Services;
 
-DisplayService.Print("Welcome to Calculator!\nAvailabe commands: calculate, history, clear, exit, cls");
+var calculateService = new CalculateService();
+var historyService = new HistoryService();
+var displayService = new DisplayService();
+
+displayService.Print("Welcome to Calculator!\nAvailabe commands: calculate, history, clear, exit, cls");
 
 List<HistoryItem> history = [];
-HistoryService.LoadHistory("history.json", history);
+historyService.LoadHistory("history.json", history);
 
 while (true)
 {
-    var input = DisplayService.ReadInput("Enter first number (or 'exit')");
+    var input = displayService.ReadInput("Enter command (calculate, history, clear, exit, cls): ");
 
     if (input == "exit")
         break;
@@ -16,15 +21,17 @@ while (true)
         Console.Clear();
 
     else if (input == "history") 
-        HistoryService.ShowHistory(history);
+        historyService.ShowHistory(history);
 
     else if (input == "clear")
-        HistoryService.ClearHistory(history);
+        historyService.ClearHistory(history);
         
     else if (input == "calculate")
-         PerformService.Calculate(history);
+         calculateService.Calculate(history);
 
     else
         Console.WriteLine("This command is not available");
 }
+
+historyService.SaveHistory(history, "history.json");
 Console.WriteLine("Good bye");
