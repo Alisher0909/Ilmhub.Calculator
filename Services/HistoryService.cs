@@ -82,7 +82,7 @@ public class HistoryService : IHistoryService
         var displayService = new DisplayService();
 
         if (history.Count == 0)
-            Console.WriteLine("HIstory is empty");
+            Console.WriteLine("HIstory is empty!!!");
 
         else
             displayService.PrintHistory(history);
