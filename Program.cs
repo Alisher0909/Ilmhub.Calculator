@@ -34,4 +34,4 @@ while (true)
 }
 
 historyService.SaveHistory(history, "history.json");
-Console.WriteLine("Good bye");
+Console.WriteLine("Good bye👋");
