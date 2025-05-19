@@ -30,7 +30,7 @@ while (true)
          calculateService.Calculate(history);
 
     else
-        Console.WriteLine("This command is not available");
+        Console.WriteLine("This command is not available!");
 }
 
 historyService.SaveHistory(history, "history.json");
