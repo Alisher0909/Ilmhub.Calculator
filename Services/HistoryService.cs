@@ -8,7 +8,7 @@ public class HistoryService : IHistoryService
 {
     public void ClearHistory(List<HistoryItem> history)
     {
-        if( history.Count == 0)
+        if (history.Count == 0)
         {
             Console.WriteLine("Ochirishga hech narsa yoq ");
             return;
@@ -16,7 +16,7 @@ public class HistoryService : IHistoryService
 
         var displayService = new DisplayService();
 
-        while(true)
+        while (true)
         {
             ShowHistory(history);
             string input = displayService.ReadInput("if you want to clear all type “all”, to go back  “cancel”, choose id to remove single element");
@@ -29,8 +29,8 @@ public class HistoryService : IHistoryService
             }
             else if (input == "cancel")
                 return;
-        
-            else if(int.TryParse(input, out int id))
+
+            else if (int.TryParse(input, out int id))
             {
                 var allIds = history.Select(x => x.Id).ToList();
 
@@ -51,7 +51,7 @@ public class HistoryService : IHistoryService
 
     public void LoadHistory(string path, List<HistoryItem> history)
     {
-        var json = File.ReadAllText(path);;
+        var json = File.ReadAllText(path); ;
         var loadedHistory = JsonSerializer.Deserialize<List<HistoryItem>>(json);
 
         if (loadedHistory != null)
