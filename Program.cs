@@ -5,14 +5,12 @@ var calculateService = new CalculateService();
 var historyService = new HistoryService();
 var displayService = new DisplayService();
 
-displayService.Print("Welcome to Calculator!\nAvailabe commands: calculate, history, clear, exit, cls");
-
 List<HistoryItem> history = [];
 historyService.LoadHistory("history.json", history);
 
 while (true)
 {
-    var input = displayService.ReadInput("Enter command (calculate, history, clear, exit, cls): ");
+    var input = displayService.ReadInput("Welcome to Calculator!\nAvailabe commands: calculate, history, clear, exit, cls");
 
     if (input == "exit")
         break;
