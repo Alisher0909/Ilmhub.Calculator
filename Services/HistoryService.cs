@@ -10,7 +10,7 @@ public class HistoryService : IHistoryService
     {
         if (history.Count == 0)
         {
-            Console.WriteLine("Ochirishga hech narsa yoq ");
+            Console.WriteLine("There is nothing to delete!");
             return;
         }
 
@@ -38,7 +38,7 @@ public class HistoryService : IHistoryService
                 {
                     var index = allIds.IndexOf(id);
                     history.Remove(history[index]);
-                    Console.WriteLine($"{id} removed");
+                    Console.WriteLine($"{id} - id removed");
                     return;
                 }
             }
